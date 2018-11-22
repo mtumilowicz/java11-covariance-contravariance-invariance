@@ -13,22 +13,29 @@ public class CovariantGuavaCollectionsTest {
 
     @Test
     public void immutableSet() {
+        ImmutableSet<Dog> dogs = ImmutableSet.of(new Dog(), new Dog());
         ImmutableSet<Animal> animals = ImmutableSet.of(new Dog(), new Dog());
     }
 
     @Test
     public void immutableList() {
+        ImmutableList<Dog> dogs = ImmutableList.of(new Dog(), new Dog());
         ImmutableList<Animal> animals = ImmutableList.of(new Dog(), new Dog());
     }
 
     @Test
     public void immutableSortedSet() {
+        ImmutableSortedSet<Dog> dogs = ImmutableSortedSet.of(new Dog(), new Dog());
         ImmutableSortedSet<Animal> animals = ImmutableSortedSet.of(new Dog(), new Dog());
     }
 
     @Test
     public void immutableMap() {
-        ImmutableMap<Number, Animal> map = ImmutableMap.of(
+        ImmutableMap<Integer, Dog> integerDogMap = ImmutableMap.of(
+                1, new Dog(),
+                2, new Dog());
+        
+        ImmutableMap<Number, Animal> numberAnimalMap = ImmutableMap.of(
                 1, new Dog(),
                 2, new Dog());
     }
