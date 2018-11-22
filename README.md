@@ -90,10 +90,18 @@ https://github.com/mtumilowicz/java11-pecs-principle
 * what we can do?
     * using vavr:
         ```
-        List<Dog> dogs = List.of(new Dog(), new Dog());
-        List<Animal> animals = List.of(new Dog(), new Dog());
+        HashSet<Dog> dogs = HashSet.of(new Dog(), new Dog());
+        HashSet<Animal> animals = HashSet.ofAll(dogs);
+        HashSet<Animal> animals2 = HashSet.narrow(dogs);
+        
+        HashSet<Animal> animals3 = HashSet.of(new Dog(), new Dog());
         ```
+        * `ofAll(java.lang.Iterable<? extends T> elements)`
+        * `narrow(io.vavr.collection.HashSet<? extends T> hashSet)`
     * using guava
+        ```
+        
+        ```
 
 List<Animal> animals = new LinkedList<Dog>(); // compile time error
 
