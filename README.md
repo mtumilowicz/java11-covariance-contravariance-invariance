@@ -96,17 +96,54 @@ https://github.com/mtumilowicz/java11-pecs-principle
         
         HashSet<Animal> animals3 = HashSet.of(new Dog(), new Dog());
         ```
-        * `ofAll(java.lang.Iterable<? extends T> elements)`
-        * `narrow(io.vavr.collection.HashSet<? extends T> hashSet)`
+        * `HashSet<T> ofAll(java.lang.Iterable<? extends T> elements)`
+        * `HashSet<T> narrow(io.vavr.collection.HashSet<? extends T> hashSet)`
     * using guava
         ```
-        
+        ImmutableSet<Dog> dogs = ImmutableSet.of(new Dog(), new Dog());
+        ImmutableSet<Animal> animals = ImmutableSet.of(new Dog(), new Dog());
+        ImmutableSet<Animal> animals2 = ImmutableSet.copyOf(Collections.<Dog>emptySet());
         ```
-
-List<Animal> animals = new LinkedList<Dog>(); // compile time error
-
-use case - xxx(List<Animal> list) {
-
-}
-
-go through Collections.unmodifiableList(xxx)
+        * `ImmutableSet<E> copyOf(Collection<? extends E> elements)`
+    * pure java
+        * factory methods
+            ```
+            List<Dog> dogs = List.of(new Dog(), new Dog());
+            List<Animal> animals = List.of(new Dog(), new Dog());
+            List<Animal> animals2 = List.copyOf(dogs);
+            ```
+        * `Collections.unmodifiableXXX`
+            ```
+            List<Dog> dogs = new LinkedList<>();
+            dogs.add(new Dog());
+            
+            List<Animal> dogsAsAnimals = Collections.unmodifiableList(dogs);
+            ```
+    * note that you could also use wildcards:
+        * covariance, read-only
+            ```
+            Dog dog = new Dog();
+            
+            List<Dog> dogs = new LinkedList<>();
+            dogs.add(dog);
+            
+            List<? extends Animal> dogsAsAnimal = dogs;
+            //        dogsAsAnimal.add(new Dog()); compile time error
+            //        Dog getDog = dogsAsAnimal.get(0);
+            
+            Animal getDog = dogsAsAnimal.get(0);
+    
+            assertThat(getDog, is(dog));
+            ```
+        * contravariance, write-only
+            ```
+            List<Dog> dogs = new LinkedList<>();
+    
+            List<? super Dog> onlyDogSpecies = dogs;
+            onlyDogSpecies.add(new Dog());
+            onlyDogSpecies.add(new BigDog());
+    
+            //        Animal getDog = dogsAsAnimal.get(0); compile time error
+    
+            assertThat(onlyDogSpecies.size(), is(2));
+            ```
