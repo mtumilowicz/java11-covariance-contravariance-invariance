@@ -55,6 +55,14 @@ covariance and contravariance.
     * contravariance is write-only
     * otherwise compile-time error
 
+**Convariance could be dangerous**:
+```
+Dog[] dogs = new Dog[5];
+Animal[] animals = dogs;
+
+animals[0] = new Cat(); // ArrayStoreException
+```
+
 ## use case
 Please refer my other github project for PECS principle:
 https://github.com/mtumilowicz/java11-pecs-principle
