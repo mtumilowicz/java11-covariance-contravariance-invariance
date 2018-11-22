@@ -32,8 +32,6 @@ public class WildcardsJavaUtilCollections {
 
     @Test
     public void contravariance_is_writeOnly() {
-        Dog dog = new Dog();
-
         List<Dog> dogs = new LinkedList<>();
 
         List<? super Dog> onlyDogSpecies = dogs;
