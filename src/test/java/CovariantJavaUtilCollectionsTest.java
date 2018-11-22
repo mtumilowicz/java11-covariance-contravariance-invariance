@@ -1,5 +1,4 @@
 import animal.Animal;
-import animal.Cat;
 import animal.Dog;
 import org.junit.Test;
 
@@ -9,10 +8,26 @@ import java.util.*;
  * Created by mtumilowicz on 2018-11-22.
  */
 public class CovariantJavaUtilCollectionsTest {
+    
+    @Test
+    public void array_ok() {
+        Integer[] intArr = new Integer[5];
+        Number[] numArr = intArr;
+
+        numArr[0] = 1;
+    }
+
+    @Test(expected = ArrayStoreException.class)
+    public void array_runtimeError() {
+        Integer[] intArr = new Integer[5];
+        Number[] numArr = intArr;
+
+        numArr[0] = 1.5;
+    }
 
     @Test
     public void list() {
-        List<Animal> animals = List.of(new Dog(), new Cat());
+        List<Animal> animals = List.of(new Dog(), new Dog());
     }
 
     @Test
@@ -25,7 +40,7 @@ public class CovariantJavaUtilCollectionsTest {
 
     @Test
     public void set() {
-        Set<Animal> animals = Set.of(new Dog(), new Cat());
+        Set<Animal> animals = Set.of(new Dog(), new Dog());
     }
     
     @Test
@@ -40,31 +55,31 @@ public class CovariantJavaUtilCollectionsTest {
     public void map() {
         Map<Number, Animal> animals = Map.of(
                 1, new Dog(),
-                2, new Cat());
+                2, new Dog());
     }
     
     @Test
     public void unmodifiableMap() {
-        Map<Integer, Cat> cats = new HashMap<>();
-        cats.put(1, new Cat());
+        Map<Integer, Dog> dogs = new HashMap<>();
+        dogs.put(1, new Dog());
 
-        Map<Number, Animal> map = Collections.unmodifiableMap(cats);
+        Map<Number, Animal> map = Collections.unmodifiableMap(dogs);
     }
     
     @Test
     public void unmodifiableNavigableSet() {
-        TreeSet<Cat> cats = new TreeSet<>();
-        cats.add(new Cat());
+        TreeSet<Dog> dogs = new TreeSet<>();
+        dogs.add(new Dog());
 
-        NavigableSet<Cat> catsAsAnimals = Collections.unmodifiableNavigableSet(cats);
+        NavigableSet<Dog> dogsAsAnimals = Collections.unmodifiableNavigableSet(dogs);
     }
 
     @Test
     public void unmodifiableSortedSet() {
-        TreeSet<Cat> cats = new TreeSet<>();
-        cats.add(new Cat());
+        TreeSet<Dog> dogs = new TreeSet<>();
+        dogs.add(new Dog());
 
-        SortedSet<Cat> catsAsAnimals = Collections.unmodifiableSortedSet(cats);
+        SortedSet<Dog> dogsAsAnimals = Collections.unmodifiableSortedSet(dogs);
     }
     
     @Test

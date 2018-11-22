@@ -1,5 +1,4 @@
 import animal.Animal;
-import animal.Cat;
 import animal.Dog;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -14,23 +13,23 @@ public class CovariantGuavaCollectionsTest {
 
     @Test
     public void immutableSet() {
-        ImmutableSet<Animal> animals = ImmutableSet.of(new Dog(), new Cat());
+        ImmutableSet<Animal> animals = ImmutableSet.of(new Dog(), new Dog());
     }
 
     @Test
     public void immutableList() {
-        ImmutableList<Animal> animals = ImmutableList.of(new Dog(), new Cat());
+        ImmutableList<Animal> animals = ImmutableList.of(new Dog(), new Dog());
     }
 
     @Test
     public void immutableSortedSet() {
-        ImmutableSortedSet<Animal> animals = ImmutableSortedSet.of(new Dog(), new Cat());
+        ImmutableSortedSet<Animal> animals = ImmutableSortedSet.of(new Dog(), new Dog());
     }
 
     @Test
     public void immutableMap() {
         ImmutableMap<Number, Animal> map = ImmutableMap.of(
                 1, new Dog(),
-                2, new Cat());
+                2, new Dog());
     }
 }
