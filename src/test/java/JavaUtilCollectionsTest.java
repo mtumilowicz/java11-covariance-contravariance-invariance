@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by mtumilowicz on 2018-11-22.
  */
-public class CovariantJavaUtilCollectionsTest {
+public class JavaUtilCollectionsTest {
     
     @Test
     public void array_ok() {

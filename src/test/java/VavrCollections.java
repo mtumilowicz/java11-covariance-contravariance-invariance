@@ -9,7 +9,7 @@ import org.junit.Test;
 /**
  * Created by mtumilowicz on 2018-11-22.
  */
-public class CovariantVavrCollections {
+public class VavrCollections {
     @Test
     public void hashSet() {
         HashSet<Dog> dogs = HashSet.of(new Dog(), new Dog());
