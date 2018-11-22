@@ -1,24 +1,23 @@
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-covariant-collections.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-covariant-collections)
+
 # java11-covariance-contravariance-invariance
 Covariance, invariance, contravariance overview of collections in Java 11, vavr, guava.
 
-_Reference_: https://dzone.com/articles/covariance-and-contravariance  
-_Reference_: https://stackoverflow.com/questions/676615/why-is-scalas-immutable-set-not-covariant-in-its-type  
-_Reference_: https://dzone.com/articles/covariance-and-contravariance  
-_Reference_: https://github.com/google/guava/issues/2448  
+_Reference_: https://dzone.com/articles/covariance-and-contravariance
 _Reference_: https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance  
-+ _Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2
+_Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2
 
 # preface
 ## formal
-* Covariance - enables you to use a more derived type than 
+* **Covariance** - enables you to use a more derived type than 
 originally specified.
     > If A is a subtype of B then X[A] should be a subtype 
     of X[B].
-* Contravariance - enables you to use a more generic 
+* **Contravariance** - enables you to use a more generic 
 (less derived) type than originally specified.
     > If A is a supertype of B then X[A] should be a 
     supertype of X[B].
-* Invariance - means that you can use only the type 
+* **Invariance** - means that you can use only the type 
 originally specified; so an invariant generic type 
 parameter is neither covariant nor contravariant.
 
@@ -55,7 +54,7 @@ covariance and contravariance.
     * contravariance is write-only
     * otherwise compile-time error
 
-**Convariance could be dangerous**:
+**Convariance could be dangerous** (`JavaUtilCollectionsTest`):
 ```
 Dog[] dogs = new Dog[5];
 Animal[] animals = dogs;
@@ -106,6 +105,8 @@ https://github.com/mtumilowicz/java11-pecs-principle
         ```
         * `HashSet<T> ofAll(java.lang.Iterable<? extends T> elements)`
         * `HashSet<T> narrow(io.vavr.collection.HashSet<? extends T> hashSet)`
+        * in `VavrCollectionsTest` tests for: `HashSet`, `List`, 
+        `TreeSet`, `HashMap`
     * using guava
         ```
         ImmutableSet<Dog> dogs = ImmutableSet.of(new Dog(), new Dog());
@@ -113,6 +114,8 @@ https://github.com/mtumilowicz/java11-pecs-principle
         ImmutableSet<Animal> animals2 = ImmutableSet.copyOf(Collections.<Dog>emptySet());
         ```
         * `ImmutableSet<E> copyOf(Collection<? extends E> elements)`
+        * in `GuavaCollectionsTest` tests for: `ImmutableSet`, 
+        `ImmutableList`, `ImmutableSortedSet`, `ImmutableMap`
     * pure java
         * factory methods
             ```
@@ -127,6 +130,14 @@ https://github.com/mtumilowicz/java11-pecs-principle
             
             List<Animal> dogsAsAnimals = Collections.unmodifiableList(dogs);
             ```
+        * in `JavaUtilCollectionsTest` tests for: 
+        `List`, `Collections.unmodifiableList`, 
+        `Set`, `Collections.unmodifiableSet`,
+        `Map`, `Collections.unmodifiableMap`,
+        `Collections.unmodifiableNavigableSet`,
+        `Collections.unmodifiableSortedSet`,
+        `Collections.unmodifiableCollection`
+        
     * note that you could also use wildcards:
         * covariance, read-only
             ```
