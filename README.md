@@ -6,19 +6,57 @@ _Reference_: https://stackoverflow.com/questions/676615/why-is-scalas-immutable-
 _Reference_: https://dzone.com/articles/covariance-and-contravariance  
 _Reference_: https://github.com/google/guava/issues/2448  
 _Reference_: https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance  
-_Reference_: http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala/  
-_Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2
++ _Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2
 
 # preface
+## formal
+* Covariance - enables you to use a more derived type than 
+originally specified.
+    > If A is a subtype of B then X[A] should be a subtype 
+    of X[B].
+* Contravariance - enables you to use a more generic 
+(less derived) type than originally specified.
+    > If A is a supertype of B then X[A] should be a 
+    supertype of X[B].
+* Invariance - means that you can use only the type 
+originally specified; so an invariant generic type 
+parameter is neither covariant nor contravariant.
+
+## java
 Variance refers to how subtyping between more complex 
 types relates to subtyping between their components.
-
-* Covariance: accept subtypes
-* Contravariance: accept supertypes
 
 **Generics in Java are invariant.** (Java has no way 
 of knowing at runtime the type information of the 
 type parameters, due to type erasure)
+
+* Covariance: accept subtypes
+    > Arrays in java are covariant.
+* Contravariance: accept supertypes
+    > No easy examples in java (unless wildcards).
+* Invariance: neither covariant nor contravariant
+    > Generics are invarant
+
+With wildcards, it’s possible for generics to support 
+covariance and contravariance.
+
+* Covariance: `? extends Integer`
+    ```
+    List<Integer> ints = new LinkedList<>();
+    List<? extends Number> nums = ints;
+    ```
+* Contravariance: `? super Integer`
+    ```
+    List<Integer> ints = new LinkedList<>();
+    List<? super Integer> nums = ints;
+    ```
+* Remark:
+    * covariance is read-only
+    * contravariance is write-only
+    * otherwise compile-time error
+
+Please refer my other github project for PECS principle:
+https://github.com/mtumilowicz/java11-pecs-principle
 
 # project description
 
