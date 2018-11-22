@@ -1,4 +1,5 @@
 import animal.Animal;
+import animal.Cat;
 import animal.Dog;
 import org.junit.Test;
 
@@ -11,22 +12,23 @@ public class CovariantJavaUtilCollectionsTest {
     
     @Test
     public void array_ok() {
-        Integer[] intArr = new Integer[5];
-        Number[] numArr = intArr;
+        Dog[] dogs = new Dog[5];
+        Animal[] animals = dogs;
 
-        numArr[0] = 1;
+        animals[0] = new Dog();
     }
 
     @Test(expected = ArrayStoreException.class)
     public void array_runtimeError() {
-        Integer[] intArr = new Integer[5];
-        Number[] numArr = intArr;
+        Dog[] dogs = new Dog[5];
+        Animal[] animals = dogs;
 
-        numArr[0] = 1.5;
+        animals[0] = new Cat();
     }
 
     @Test
     public void list() {
+        List<Dog> dogs = List.of(new Dog(), new Dog());
         List<Animal> animals = List.of(new Dog(), new Dog());
     }
 
@@ -40,6 +42,7 @@ public class CovariantJavaUtilCollectionsTest {
 
     @Test
     public void set() {
+        Set<Dog> dogs = Set.of(new Dog(), new Dog());
         Set<Animal> animals = Set.of(new Dog(), new Dog());
     }
     
@@ -53,7 +56,11 @@ public class CovariantJavaUtilCollectionsTest {
 
     @Test
     public void map() {
-        Map<Number, Animal> animals = Map.of(
+        Map<Integer, Dog> integerDogMap = Map.of(
+                1, new Dog(),
+                2, new Dog());
+        
+        Map<Number, Animal> numberAnimalMap = Map.of(
                 1, new Dog(),
                 2, new Dog());
     }
