@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'java11-covariant-collections'
+group 'java11-covariance-contravariance-invariance'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 11

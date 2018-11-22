@@ -1,4 +1,4 @@
-# java11-covariant-collections
+# java11-covariance-contravariance-invariance
 Covariance, invariance, contravariance overview of collections in Java 11, vavr, guava.
 
 _Reference_: https://dzone.com/articles/covariance-and-contravariance  
