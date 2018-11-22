@@ -30,6 +30,7 @@ public class JavaUtilCollectionsTest {
     public void list() {
         List<Dog> dogs = List.of(new Dog(), new Dog());
         List<Animal> animals = List.of(new Dog(), new Dog());
+        List<Animal> animals2 = List.copyOf(dogs);
     }
 
     @Test
@@ -44,6 +45,7 @@ public class JavaUtilCollectionsTest {
     public void set() {
         Set<Dog> dogs = Set.of(new Dog(), new Dog());
         Set<Animal> animals = Set.of(new Dog(), new Dog());
+        Set<Animal> animals2 = Set.copyOf(dogs);
     }
     
     @Test
@@ -63,6 +65,8 @@ public class JavaUtilCollectionsTest {
         Map<Number, Animal> numberAnimalMap = Map.of(
                 1, new Dog(),
                 2, new Dog());
+
+        Map<Number, Animal> numberAnimalMap2 = Map.copyOf(integerDogMap);
     }
     
     @Test
