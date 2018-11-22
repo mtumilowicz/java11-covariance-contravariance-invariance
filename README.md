@@ -21,3 +21,9 @@ of knowing at runtime the type information of the
 type parameters, due to type erasure)
 
 # project description
+
+use case - xxx(List<Animal> list) {
+
+}
+
+go through Collections.unmodifiableList(xxx)
