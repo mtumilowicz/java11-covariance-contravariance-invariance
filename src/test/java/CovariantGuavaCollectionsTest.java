@@ -29,7 +29,7 @@ public class CovariantGuavaCollectionsTest {
 
     @Test
     public void immutableMap() {
-        ImmutableMap<Number, Animal> stringIntegerMap = ImmutableMap.of(
+        ImmutableMap<Number, Animal> map = ImmutableMap.of(
                 1, new Dog(),
                 2, new Cat());
     }
