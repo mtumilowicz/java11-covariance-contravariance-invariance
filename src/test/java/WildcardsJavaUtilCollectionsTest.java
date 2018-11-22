@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by mtumilowicz on 2018-11-22.
  */
-public class WildcardsJavaUtilCollections {
+public class WildcardsJavaUtilCollectionsTest {
     
     @Test
     public void covariance_is_readOnly() {
