@@ -3,9 +3,9 @@
 # java11-covariance-contravariance-invariance
 Covariance, invariance, contravariance overview of collections in Java 11, vavr, guava.
 
-_Reference_: https://dzone.com/articles/covariance-and-contravariance
+_Reference_: https://dzone.com/articles/covariance-and-contravariance  
 _Reference_: https://docs.microsoft.com/en-us/dotnet/standard/generics/covariance-and-contravariance  
-_Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2
+_Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2  
 
 # preface
 ## formal
