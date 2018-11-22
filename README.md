@@ -55,10 +55,28 @@ covariance and contravariance.
     * contravariance is write-only
     * otherwise compile-time error
 
+## use case
 Please refer my other github project for PECS principle:
 https://github.com/mtumilowicz/java11-pecs-principle
 
+1. suppose we have method that we cannot modify
+    ```
+    static void process(List<Animal> animals) {
+        ...
+    }
+    ```
+1. then we cannot invoke (because of compile time error)
+    ```
+    process(new LinkedList<Dog>()) // compile time error
+    ```
+1. but we could try to bypass it with a trick
+    ```
+    process(Collections.unmodifiableList(new LinkedList<Dog>()))
+    ```
+
 # project description
+
+List<Animal> animals = new LinkedList<Dog>(); // compile time error
 
 use case - xxx(List<Animal> list) {
 
