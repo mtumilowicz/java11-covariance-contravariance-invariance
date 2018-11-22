@@ -10,6 +10,14 @@ _Reference_: http://blog.kamkor.me/Covariance-And-Contravariance-In-Scala/
 _Reference_: https://medium.freecodecamp.org/understanding-java-generic-types-covariance-and-contravariance-88f4c19763d2
 
 # preface
+Variance refers to how subtyping between more complex 
+types relates to subtyping between their components.
 
+* Covariance: accept subtypes
+* Contravariance: accept supertypes
+
+**Generics in Java are invariant.** (Java has no way 
+of knowing at runtime the type information of the 
+type parameters, due to type erasure)
 
 # project description
