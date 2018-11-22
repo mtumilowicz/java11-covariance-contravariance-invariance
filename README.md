@@ -54,13 +54,17 @@ covariance and contravariance.
     * contravariance is write-only
     * otherwise compile-time error
 
-**Convariance could be dangerous** (`JavaUtilCollectionsTest`):
+**Covariance could be dangerous** (`JavaUtilCollectionsTest`):
 ```
 Dog[] dogs = new Dog[5];
 Animal[] animals = dogs;
 
 animals[0] = new Cat(); // ArrayStoreException
 ```
+
+**Note that covariance can't be dangerous with 
+immutable / readonly collections, cause we can't
+modify them.**
 
 ## use case
 1. suppose we have method that we cannot modify
