@@ -63,9 +63,6 @@ animals[0] = new Cat(); // ArrayStoreException
 ```
 
 ## use case
-Please refer my other github project for PECS principle:
-https://github.com/mtumilowicz/java11-pecs-principle
-
 1. suppose we have method that we cannot modify
     ```
     static void process(List<Animal> animals) {
@@ -139,6 +136,8 @@ https://github.com/mtumilowicz/java11-pecs-principle
         `Collections.unmodifiableCollection`
         
     * note that you could also use wildcards:
+        * Please refer my other github project for PECS principle:
+          https://github.com/mtumilowicz/java11-pecs-principle
         * covariance, read-only
             ```
             Dog dog = new Dog();
