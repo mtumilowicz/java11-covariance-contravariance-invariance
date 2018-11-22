@@ -75,6 +75,25 @@ https://github.com/mtumilowicz/java11-pecs-principle
     ```
 
 # project description
+* we have hierarchical structure:
+    * `interface Animal extends Comparable<Animal>`
+    * `class Cat implements Animal`
+    * `class Dog implements Animal`
+    * `class BigDog extends Dog`
+    
+* what we can't do?
+    ```
+    List<Dog> dogs = new LinkedList<>();
+    List<Animal> animals = dogs; // compile time error
+    ```
+    
+* what we can do?
+    * using vavr:
+        ```
+        List<Dog> dogs = List.of(new Dog(), new Dog());
+        List<Animal> animals = List.of(new Dog(), new Dog());
+        ```
+    * using guava
 
 List<Animal> animals = new LinkedList<Dog>(); // compile time error
 
