@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'java11-covariant-collections'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.vavr', name: 'vavr', version: '0.9.2'
+    compile group: 'com.google.guava', name: 'guava', version: '27.0-jre'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
