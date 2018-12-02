@@ -62,6 +62,14 @@ Animal[] animals = dogs;
 animals[0] = new Cat(); // ArrayStoreException
 ```
 
+**Mutability combined with covariance would break type safety:**
+```
+List<String> strs = new ArrayList<String>();
+List<Object> objs = strs; // !!! The cause of the upcoming problem sits here. Java prohibits this!
+objs.add(1); // Here we put an Integer into a list of Strings
+String s = strs.get(0); // !!! ClassCastException: Cannot cast Integer to String
+```
+
 **Note that covariance can't be dangerous with 
 immutable / readonly collections, cause we can't
 modify them.**
