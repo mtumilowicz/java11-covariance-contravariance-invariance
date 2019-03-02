@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mtumilowicz/java11-covariant-collections.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-covariant-collections)
+[![Build Status](https://travis-ci.com/mtumilowicz/java11-covariance-contravariance-invariance.svg?branch=master)](https://travis-ci.com/mtumilowicz/java11-covariance-contravariance-invariance)
 
 # java11-covariance-contravariance-invariance
 Covariance, invariance, contravariance overview of collections in Java 11, vavr, guava.
