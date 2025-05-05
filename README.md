@@ -157,9 +157,9 @@ modify them.**
             List<Dog> dogs = new LinkedList<>();
             dogs.add(dog);
             
-            List<? extends Animal> dogsAsAnimal = dogs;
-            //        dogsAsAnimal.add(new Dog()); compile time error
-            //        Dog getDog = dogsAsAnimal.get(0);
+            List<? extends Animal> animals = dogs;
+            //        animals.add(new Cat()); compile time error even as Cat extends Animal
+            //        animals.add(new Dog()); compile time error even as Dog extends Animal - we are not sure if animals are dogs only
             
             Animal getDog = dogsAsAnimal.get(0);
     
@@ -172,8 +172,10 @@ modify them.**
             List<? super Dog> onlyDogSpecies = dogs;
             onlyDogSpecies.add(new Dog());
             onlyDogSpecies.add(new BigDog());
+            // onlyDogSpecies.add(new Object()); compile time error
+            // explanation: List<? super Dog> can be List<Dog>, List<Animal>, or even List<Object> => no adding, because we don't know what real type is there
     
-            //        Animal getDog = dogsAsAnimal.get(0); compile time error
+            //        Animal getDog = dogsAsAnimal.get(0); compile time error - List<? super Dog> might be List<Dog>, List<Animal>, or even List<Object>
     
             assertThat(onlyDogSpecies.size(), is(2));
             ```
